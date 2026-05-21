@@ -2,14 +2,20 @@ package paymentSystem;
 
 public class PaymentController {
     PaymentService paymentService;
+
     public PaymentController(PaymentService paymentService) {
         this.paymentService = paymentService;
     }
-    public void processPayment(double amount) {
-        if(amount < 0) {
+
+    public void processPayment(Payment payment) {
+        if (payment == null) {
+            System.out.println("Invalid Payment");
+            return;
+        }
+        if (payment.getAmount() < 0) {
             System.out.println("Invalid amount");
             return;
         }
-        paymentService.processPayment(amount);
+        paymentService.processPayment(payment);
     }
 }

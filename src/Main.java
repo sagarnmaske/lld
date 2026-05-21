@@ -1,11 +1,13 @@
+import paymentSystem.Payment;
 import paymentSystem.PaymentController;
 import paymentSystem.PaymentService;
+import paymentSystem.PaymentWay;
 
 public class Main {
     public static void main(String[] args) {
         PaymentController paymentController = new PaymentController(new PaymentService());
-        paymentController.processPayment(500);
-        paymentController.processPayment(-10);
-        paymentController.processPayment(1000);
+        paymentController.processPayment(new Payment(PaymentWay.UPI,1000));
+        paymentController.processPayment(new Payment(PaymentWay.CREDIT_CARD,2000));
+        paymentController.processPayment(new Payment(PaymentWay.UPI,-100));
     }
 }

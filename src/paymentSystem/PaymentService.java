@@ -1,8 +1,9 @@
 package paymentSystem;
 
 public class PaymentService {
-    public void processPayment(double amount) {
-        MakePayment makePayment = new MakePaymentViaUpi();
-        makePayment.pay(amount);
+
+    public void processPayment(Payment payment) {
+        MakePayment makePayment = payment.getPaymentWay().getMakePayment();
+        makePayment.pay(payment.getAmount());
     }
 }
